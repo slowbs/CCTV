@@ -11,8 +11,8 @@ $routes['/api/status']['POST'] = 'status/post.php';
 $routes['/api/status']['PUT'] = 'status/put.php';
 $routes['/api/status']['DELETE'] = 'status/delete.php';
 
-//ข้อมูลครู
-$routes['/api/teachers']['GET'] = 'teachers/get.php';
-$routes['/api/teachers']['POST'] = 'teachers/post.php';
-$routes['/api/teachers']['PUT'] = 'teachers/put.php';
-$routes['/api/teachers']['DELETE'] = 'teachers/delete.php';
+//ข้อมูลชั้นอาคาร
+$routes['/api/floors']['GET'] = 'floors/get.php';
+$routes['/api/floors']['POST'] = 'floors/post.php';
+$routes['/api/floors']['PUT'] = 'floors/put.php';
+$routes['/api/floors']['DELETE'] = 'floors/delete.php';

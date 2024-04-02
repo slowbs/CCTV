@@ -1,7 +1,7 @@
 <?php
 $data = json_decode(file_get_contents('php://input'));
 
-if (isset($data->durable_no) && isset($data->durable_name) && isset($data->location)) {
+if (isset($data->durable_no) && isset($data->durable_name) && isset($data->location) && isset($data->brand) && isset($data->floor) && isset($data->status)) {
     if (empty($data->durable_no)) {
         http_response_code(400);
         exit(json_encode([
@@ -20,18 +20,39 @@ if (isset($data->durable_no) && isset($data->durable_name) && isset($data->locat
             'message' => 'Location is required'
         ]));
     }
+    if (empty($data->brand)) {
+        http_response_code(400);
+        exit(json_encode([
+            'message' => 'Brand is required'
+        ]));
+    }
+    if (empty($data->floor)) {
+        http_response_code(400);
+        exit(json_encode([
+            'message' => 'Floor is required'
+        ]));
+    }
+    if (empty($data->status)) {
+        http_response_code(400);
+        exit(json_encode([
+            'message' => 'Status is required'
+        ]));
+    }
 
     //กรณีที่เงือนไขครบถ้วน
     // echo json_encode([
     //     'message' => 'valid',
     //     'data' => $data->name
     // ]);
-    $query = "INSERT INTO cctv (durable_no, durable_name, location) VALUES (?, ?, ?)";
+    $query = "INSERT INTO cctv (durable_no, durable_name, location, brand, floor, status) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, 'sss',
+    mysqli_stmt_bind_param($stmt, 'ssssss',
         $data->durable_no,
         $data->durable_name,
-        $data->location
+        $data->location,
+        $data->brand,
+        $data->floor,
+        $data->status
     );
     mysqli_stmt_execute($stmt);
     $error_message = mysqli_error($conn);

@@ -25,6 +25,10 @@ export class CctvService {
   get_status() {
     return this.httpClient.get<IStatus[]>(this.backendURL + 'status');
   }
+
+  get_floor() {
+    return this.httpClient.get<IFloor[]>(this.backendURL + 'floors');
+  }
 }
 
 export interface ICctvs {
@@ -46,3 +50,8 @@ export interface IStatus {
   status_name: string;
 }
 
+export interface IFloor {
+  floor_id?: string;
+  floor_name: string;
+  floor_status?: string;
+}
