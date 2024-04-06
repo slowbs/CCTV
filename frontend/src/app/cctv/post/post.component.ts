@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CctvService, ICctvs, IFloor, IStatus } from '../cctv.service';
 import { GetComponent } from '../get/get.component';
-declare const $:any;
+declare const $: any;
 
 @Component({
   selector: 'app-post',
@@ -13,8 +13,9 @@ declare const $:any;
   styleUrl: './post.component.css'
 })
 export class PostComponent {
+  //ทำการ Input ข้อมูลจาก Component อื่น
   @Input('getComp') getComp: GetComponent;
-  
+
   constructor(private cctvService: CctvService) {
     this.getStatus();
     this.getFloor();
@@ -31,7 +32,7 @@ export class PostComponent {
     floor: '',
     status: ''
   }
-  
+
 
   room: string = '';
 
@@ -42,7 +43,10 @@ export class PostComponent {
         next: (result) => {
           // console.log(result)
           $('#addCCTVModal').modal('hide')
+          //เรียก Function get CCTV จาก GetComponent
           this.getComp.getCCTV();
+          //Reset ค่า ใน Model
+          this.resetModel();
         },
         error: (excep) => {
           console.log(excep)
@@ -61,11 +65,20 @@ export class PostComponent {
 
   getFloor() {
     return this.cctvService.get_floor()
-    .subscribe(result => {
-      this.floorItems = result['result']
-      // console.log(this.floorItems)
-    });
+      .subscribe(result => {
+        this.floorItems = result['result']
+        // console.log(this.floorItems)
+      });
   }
 
+  resetModel() {
+    this.model = {
+      durable_no: '',
+      durable_name: '',
+      location: '',
+      floor: '',
+      status: ''
+    }
+  }
 
 }
