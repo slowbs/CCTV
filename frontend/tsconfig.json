@@ -20,6 +20,7 @@
     "useDefineForClassFields": false,
     "suppressImplicitAnyIndexErrors": true,
     "ignoreDeprecations": "5.0",
+    "strictPropertyInitialization": false,
     "lib": [
       "ES2022",
       "dom"

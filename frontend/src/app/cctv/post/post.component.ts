@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CctvService, ICctvs, IFloor, IStatus } from '../cctv.service';
+import { GetComponent } from '../get/get.component';
+declare const $:any;
 
 @Component({
   selector: 'app-post',
@@ -11,7 +13,8 @@ import { CctvService, ICctvs, IFloor, IStatus } from '../cctv.service';
   styleUrl: './post.component.css'
 })
 export class PostComponent {
-
+  @Input('getComp') getComp: GetComponent;
+  
   constructor(private cctvService: CctvService) {
     this.getStatus();
     this.getFloor();
@@ -33,11 +36,13 @@ export class PostComponent {
   room: string = '';
 
   public onSubmit() {
-    console.log(this.model)
+    // console.log(this.model)
     this.cctvService.post_items(this.model)
       .subscribe({
         next: (result) => {
-          console.log(result)
+          // console.log(result)
+          $('#addCCTVModal').modal('hide')
+          this.getComp.getCCTV();
         },
         error: (excep) => {
           console.log(excep)
