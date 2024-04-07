@@ -8,6 +8,7 @@ export class CctvService {
 
   // private backendURL = 'http://localhost/student/backend/index.php/api/member';
   private backendURL = 'http://localhost/cctv/backend/index.php/api/';
+  public updateModel : ICctvs = Object.assign({})
 
   constructor(private httpClient: HttpClient) { }
 

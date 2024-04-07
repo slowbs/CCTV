@@ -57,5 +57,10 @@ export class GetComponent {
       });
   }
 
+  onEditModal(item:ICctvs){
+    Object.assign(this.cctvService.updateModel, item)
+    console.log(this.cctvService.updateModel)
+  }
+
 
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CctvService, ICctvs } from '../cctv.service';
 
 @Component({
   selector: 'app-put',
@@ -8,5 +9,12 @@ import { Component } from '@angular/core';
   styleUrl: './put.component.css'
 })
 export class PutComponent {
+
+  public model: ICctvs;
+
+  constructor(private cctvService: CctvService) {
+    this.model = this.cctvService.updateModel;
+    console.log(this.model)
+  }
 
 }

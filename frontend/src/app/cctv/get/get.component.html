@@ -35,7 +35,7 @@
             <td>{{item.floor}}</td>
             <td>{{item.status}}</td>
             <td>
-                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
+                <a href="#editEmployeeModal" class="edit" data-toggle="modal" (click)="onEditModal(item)"><i class="material-icons"
                         data-toggle="tooltip" title="แก้ไข">&#xE254;</i></a>
                 <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons"
                         data-toggle="tooltip" title="ลบ">&#xE872;</i></a>
