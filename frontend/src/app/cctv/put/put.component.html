@@ -10,21 +10,39 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>เลขครุภัณฑ์</label>
-                        <input type="text" class="form-control" required placeholder="เลขครุภัณฑ์" 
-                        [(ngModel)]="model.durable_no" name="durable_no">
+                        <input type="text" class="form-control" required placeholder="เลขครุภัณฑ์"
+                            [(ngModel)]="model.durable_no" name="durable_no">
                     </div>
                     <div class="form-group">
                         <label>รายการ</label>
-                        <input type="text" class="form-control" required placeholder="รายการ" 
-                        [(ngModel)]="model.durable_name" name="durable_name">
+                        <input type="text" class="form-control" required placeholder="รายการ"
+                            [(ngModel)]="model.durable_name" name="durable_name">
                     </div>
                     <div class="form-group">
-                        <label>Address</label>
-                        <textarea class="form-control" required></textarea>
+                        <label>ยี่ห้อ</label>
+                        <input type="text" class="form-control" required placeholder="ยี่ห้อ" [(ngModel)]="model.brand"
+                            name="brand">
                     </div>
                     <div class="form-group">
-                        <label>Phone</label>
-                        <input type="text" class="form-control" required>
+                        <label>สถานที่</label>
+                        <input type="text" class="form-control" required placeholder="สถานที่"
+                            [(ngModel)]="model.location" name="location">
+                    </div>
+                    <div class="form-group">
+                        <label>ชั้น</label>
+                        <select class="custom-select" [(ngModel)]="model.floor_id" name="floor">
+                            <option value="">กรุณาเลือกชั้น</option>
+                            <option *ngFor="let item of floorItems" value="{{item.floor_id}}">{{item.floor_name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>สถานะ</label>
+                        <select class="custom-select" [(ngModel)]="model.status_id" name="status">
+                            <option value="">กรุณาเลือกสถานะ</option>
+                            <option *ngFor="let item of statusItems" value="{{item.status_id}}">{{item.status_name}}
+                            </option>
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">

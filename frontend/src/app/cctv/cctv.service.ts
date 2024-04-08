@@ -41,7 +41,9 @@ export interface ICctvs {
   location?: string;
   monitor?: string;
   floor?: string;
+  floor_id?: string;
   status?: string;
+  status_id?: string;
   date_created?: string;
   completed?: boolean;
 }
