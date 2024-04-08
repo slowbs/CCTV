@@ -10,7 +10,7 @@ import { CctvService, ICctvs } from '../cctv.service';
   selector: 'app-get',
   standalone: true,
   imports: [MatButtonModule, MatTooltipModule, MatCheckboxModule, FormsModule, CommonModule],
-  providers: [CctvService],
+  // providers: [CctvService],
   templateUrl: './get.component.html',
   styleUrl: './get.component.css'
 })
@@ -59,7 +59,7 @@ export class GetComponent {
 
   onEditModal(item:ICctvs){
     Object.assign(this.cctvService.updateModel, item)
-    console.log(this.cctvService.updateModel)
+    // console.log(this.cctvService.updateModel)
   }
 
 
