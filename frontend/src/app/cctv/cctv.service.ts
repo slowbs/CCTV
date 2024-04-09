@@ -10,7 +10,8 @@ export class CctvService {
   private backendURL = 'http://localhost/cctv/backend/index.php/api/';
   public updateModel: ICctvs = Object.assign({})
   public deleteModel: ICctvs = Object.assign({})
-
+  public deleteAllModel: any = [];
+  
   constructor(private httpClient: HttpClient) { }
 
   // ดึงข้อมูลกล้อง
