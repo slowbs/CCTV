@@ -21,7 +21,7 @@ export class DeleteComponent {
   }
 
   onDelete() {
-    // console.log(this.cctvService.deleteModel)
+    console.log(this.cctvService.deleteModel)
     this.cctvService.delete_items(this.cctvService.deleteModel.id)
       .subscribe({
         next: (result) => {

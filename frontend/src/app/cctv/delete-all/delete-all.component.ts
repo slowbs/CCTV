@@ -20,8 +20,8 @@ export class DeleteAllComponent {
   }
 
   onDelete() {
-    console.log(this.cctvService.deleteAllModel)
-    this.cctvService.delete_Allitems(this.cctvService.deleteAllModel.id)
+    // console.log(this.cctvService.deleteAllModel)
+    this.cctvService.delete_Allitems(this.cctvService.deleteAllModel)
       .subscribe({
         next: (result) => {
           console.log(result)
