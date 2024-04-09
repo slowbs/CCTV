@@ -21,7 +21,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor = "let item of cctvItems">
+        <tr *ngFor="let item of cctvItems">
             <td>
                 <mat-checkbox class="example-margin" [(ngModel)]="item.completed"
                     (ngModelChange)="updateAllComplete()"></mat-checkbox>
@@ -35,10 +35,10 @@
             <td>{{item.floor}}</td>
             <td>{{item.status}}</td>
             <td>
-                <a href="#editCctvModal" class="edit" data-toggle="modal" (click)="onEditModal(item)"><i class="material-icons"
-                        data-toggle="tooltip" title="แก้ไข">&#xE254;</i></a>
-                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons"
-                        data-toggle="tooltip" title="ลบ">&#xE872;</i></a>
+                <a href="#editCctvModal" class="edit" data-toggle="modal" (click)="onEditModal(item)"><i
+                        class="material-icons" data-toggle="tooltip" title="แก้ไข">&#xE254;</i></a>
+                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" (click)="onDeleteModal(item)"><i
+                        class="material-icons" data-toggle="tooltip" title="ลบ">&#xE872;</i></a>
             </td>
         </tr>
     </tbody>

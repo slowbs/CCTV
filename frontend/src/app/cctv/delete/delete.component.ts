@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CctvService } from '../cctv.service';
 
 @Component({
   selector: 'app-delete',
@@ -8,5 +9,13 @@ import { Component } from '@angular/core';
   styleUrl: './delete.component.css'
 })
 export class DeleteComponent {
+
+  constructor(private cctvService: CctvService) {
+
+  }
+
+  onDelete() {
+    console.log(this.cctvService.deleteModel)
+  }
 
 }

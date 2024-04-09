@@ -57,9 +57,16 @@ export class GetComponent {
       });
   }
 
-  onEditModal(item:ICctvs){
+  //Function เมื่อกดปุ่มแก้ไข
+  onEditModal(item: ICctvs) {
     Object.assign(this.cctvService.updateModel, item)
     // console.log(this.cctvService.updateModel)
+  }
+
+  // Function เพื่อกดปุ่มลบ
+  onDeleteModal(item: ICctvs) {
+    // console.log(item)
+    Object.assign(this.cctvService.deleteModel, item)
   }
 
 

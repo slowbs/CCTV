@@ -8,7 +8,8 @@ export class CctvService {
 
   // private backendURL = 'http://localhost/student/backend/index.php/api/member';
   private backendURL = 'http://localhost/cctv/backend/index.php/api/';
-  public updateModel : ICctvs = Object.assign({})
+  public updateModel: ICctvs = Object.assign({})
+  public deleteModel: ICctvs = Object.assign({})
 
   constructor(private httpClient: HttpClient) { }
 
@@ -23,12 +24,12 @@ export class CctvService {
     return this.httpClient.post(this.backendURL + 'cctvs', value);
   }
 
-  put_items(id: any, value: ICctvs){
+  put_items(id: any, value: ICctvs) {
     // return this.httpClient.put(this.backendURL + 'cctvs?id=' + id, value)
     // return this.httpClient.put(this.backendURL + 'cctvs', value, { params : { id : id}})
     // delete value.durable_name;
     // value.durable_name = '';
-    return this.httpClient.put(this.backendURL + 'cctvs', value, { params : { id }})
+    return this.httpClient.put(this.backendURL + 'cctvs', value, { params: { id } })
   }
 
   get_status() {
