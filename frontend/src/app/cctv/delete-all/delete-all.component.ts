@@ -21,6 +21,16 @@ export class DeleteAllComponent {
 
   onDelete() {
     console.log(this.cctvService.deleteAllModel)
+    this.cctvService.delete_items(this.cctvService.deleteAllModel.id)
+      .subscribe({
+        next: (result) => {
+          console.log(result)
+        },
+        error: (excep) => {
+          console.log(excep)
+          // alert(excep.error.message)
+        }
+      })
   }
 
 }

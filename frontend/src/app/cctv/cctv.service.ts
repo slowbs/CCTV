@@ -11,7 +11,7 @@ export class CctvService {
   public updateModel: ICctvs = Object.assign({})
   public deleteModel: ICctvs = Object.assign({})
   public deleteAllModel: any = [];
-  
+
   constructor(private httpClient: HttpClient) { }
 
   // ดึงข้อมูลกล้อง
@@ -37,6 +37,10 @@ export class CctvService {
   // ลบข้อมูลกล้อง
   delete_items(id: any) {
     return this.httpClient.delete(this.backendURL + 'cctvs', { params: { id } })
+  }
+
+  delete_Allitems(id: any[]) {
+    return this.httpClient.delete(this.backendURL + 'cctvs', { params: { "id[]" : id } })
   }
 
   get_status() {
