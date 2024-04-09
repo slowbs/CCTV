@@ -24,30 +24,30 @@ export class GetComponent {
   }
 
 
-  checked: boolean = false;
-  subtasks = [
-    { completed: false }
-  ]
+  // checked: boolean = false;
+  // subtasks = [
+  //   { completed: false }
+  // ]
 
-  someComplete(): boolean {
-    if (this.checked == null) {
-      return false;
-    }
-    return this.cctvItems.filter(t => t.completed).length > 0 && !this.checked;
-  }
+  // someComplete(): boolean {
+  //   if (this.checked == null) {
+  //     return false;
+  //   }
+  //   return this.cctvItems.filter(t => t.completed).length > 0 && !this.checked;
+  // }
 
-  setAll(completed: boolean) {
-    this.checked = completed;
-    if (this.subtasks == null) {
-      return;
-    }
-    this.cctvItems.forEach(t => (t.completed = completed));
-    // console.log(this.memberItems)
-  }
+  // setAll(completed: boolean) {
+  //   this.checked = completed;
+  //   if (this.subtasks == null) {
+  //     return;
+  //   }
+  //   this.cctvItems.forEach(t => (t.completed = completed));
+  //   // console.log(this.memberItems)
+  // }
 
-  updateAllComplete() {
-    this.checked = this.cctvItems != null && this.cctvItems.every(t => t.completed);
-  }
+  // updateAllComplete() {
+  //   this.checked = this.cctvItems != null && this.cctvItems.every(t => t.completed);
+  // }
 
   getCCTV() {
     return this.cctvService.get_cctvs()
