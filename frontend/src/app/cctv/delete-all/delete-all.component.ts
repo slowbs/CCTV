@@ -3,6 +3,7 @@ import { GetComponent } from '../get/get.component';
 import { CctvService } from '../cctv.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+declare const $:any;
 
 @Component({
   selector: 'app-delete-all',
@@ -24,7 +25,9 @@ export class DeleteAllComponent {
     this.cctvService.delete_Allitems(this.cctvService.deleteAllModel)
       .subscribe({
         next: (result) => {
-          console.log(result)
+          // console.log(result)
+          $('#deleteAllModal').modal('hide');
+          this.getComp.getCCTV();
         },
         error: (excep) => {
           console.log(excep)
