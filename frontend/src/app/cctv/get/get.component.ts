@@ -44,13 +44,16 @@ export class GetComponent {
     }
     this.cctvItems.forEach(t => (t.completed = completed));
     // console.log(this.cctvItems)
-    const deleteAll = this.cctvItems.filter(t => t.completed)
-    console.log(deleteAll)
+    this.onStoreCctvDelete();
   }
 
   updateAllComplete() {
     this.checked = this.cctvItems != null && this.cctvItems.every(t => t.completed);
-    const deleteAll = this.cctvItems.filter(t => t.completed)
+    this.onStoreCctvDelete();
+  }
+
+  onStoreCctvDelete() {
+    const deleteAll = this.cctvItems.filter(t => t.completed).map(t => t.id)
     console.log(deleteAll)
   }
 
