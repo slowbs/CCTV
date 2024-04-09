@@ -23,6 +23,14 @@ export class CctvService {
     return this.httpClient.post(this.backendURL + 'cctvs', value);
   }
 
+  put_items(id: any, value: ICctvs){
+    // return this.httpClient.put(this.backendURL + 'cctvs?id=' + id, value)
+    // return this.httpClient.put(this.backendURL + 'cctvs', value, { params : { id : id}})
+    // delete value.durable_name;
+    // value.durable_name = '';
+    return this.httpClient.put(this.backendURL + 'cctvs', value, { params : { id }})
+  }
+
   get_status() {
     return this.httpClient.get<IStatus[]>(this.backendURL + 'status');
   }
