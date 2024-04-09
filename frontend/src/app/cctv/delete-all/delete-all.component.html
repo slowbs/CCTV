@@ -3,15 +3,26 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <form (submit)="onDelete()">
-            <div class="modal-header">
-                <h4 class="modal-title">Delete All CCTV</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            </div>
-            <div class="modal-footer">
-                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                <input type="submit" class="btn btn-danger" value="Delete">
-            </div>
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete All CCTV</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body" *ngIf="cctvService.deleteAllModel.length > 0; else emptyItem">
+                    <p class="text-danger">ยืนยันที่จะลบรายการ</p>
+                    <p class="text-warning"><small>This action cannot be undone.</small></p>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input type="submit" class="btn btn-danger" value="Delete"
+                        *ngIf="cctvService.deleteAllModel.length > 0">
+                </div>
             </form>
         </div>
     </div>
 </div>
+
+<ng-template #emptyItem>
+    <div class="modal-body">
+        <p class="text-danger">กรุณาเลือกรายการที่ต้องการจะลบ</p>
+    </div>
+</ng-template>

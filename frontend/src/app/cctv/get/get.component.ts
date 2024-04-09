@@ -54,9 +54,9 @@ export class GetComponent {
 
   onStoreCctvDelete() {
     // const deleteAll = this.cctvItems.filter(t => t.completed).map(t => t.id)
-    this.cctvService.deleteAllModel = this.cctvItems.filter(t => t.completed).map(t => t.id)
-    console.log(this.cctvService.deleteAllModel)
     // console.log(deleteAll)
+    this.cctvService.deleteAllModel = this.cctvItems.filter(t => t.completed).map(t => t.id)
+    // console.log(this.cctvService.deleteAllModel)
   }
 
 

@@ -15,7 +15,7 @@ export class DeleteAllComponent {
 
   @Input('getComp') getComp: GetComponent
 
-  constructor(private cctvService: CctvService) {
+  constructor(public cctvService: CctvService) {
 
   }
 
