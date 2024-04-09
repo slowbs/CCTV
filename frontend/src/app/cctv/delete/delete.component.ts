@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CctvService } from '../cctv.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { GetComponent } from '../get/get.component';
+declare const $: any;
 
 @Component({
   selector: 'app-delete',
@@ -11,6 +13,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './delete.component.css'
 })
 export class DeleteComponent {
+
+  @Input('getComp') getComp: GetComponent
 
   constructor(private cctvService: CctvService) {
 
@@ -22,8 +26,8 @@ export class DeleteComponent {
       .subscribe({
         next: (result) => {
           console.log(result)
-          // $('#editCctvModal').modal('hide');
-          // this.getComp.getCCTV();
+          $('#deleteCctvModal').modal('hide');
+          this.getComp.getCCTV();
         },
         error: (excep) => {
           console.log(excep)

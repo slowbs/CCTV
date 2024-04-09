@@ -7,10 +7,10 @@
             <h2>Manage <b>CCTV</b></h2>
           </div>
           <div class="col-sm-6">
-            <a href="#addCCTVModal" class="btn btn-success" data-toggle="modal"><i
-                class="material-icons">&#xE147;</i> <span>เพิ่มกล้อง</span></a>
-            <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i
-                class="material-icons">&#xE15C;</i> <span>ลบกล้อง</span></a>
+            <a href="#addCCTVModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i>
+              <span>เพิ่มกล้อง</span></a>
+            <a href="#deleteCctvModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i>
+              <span>ลบกล้อง</span></a>
           </div>
         </div>
       </div>
@@ -20,4 +20,4 @@
 </div>
 <app-post [getComp]="getComp"></app-post>
 <app-put [getComp]="getComp"></app-put>
-<app-delete></app-delete>
+<app-delete [getComp]="getComp"></app-delete>
