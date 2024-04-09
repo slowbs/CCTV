@@ -13,23 +13,29 @@ export class CctvService {
 
   constructor(private httpClient: HttpClient) { }
 
-  // ดึงข้อมูลนักเรียน
+  // ดึงข้อมูลกล้อง
   get_cctvs() {
     return this.httpClient.get<ICctvs[]>(this.backendURL + 'cctvs');
   }
 
-
+  //เพิ่มข้อมูลกล้อง
   post_items(value: ICctvs) {
     // delete value.name;
     return this.httpClient.post(this.backendURL + 'cctvs', value);
   }
 
+  // แก้ไขข้อมูลกล้อง
   put_items(id: any, value: ICctvs) {
     // return this.httpClient.put(this.backendURL + 'cctvs?id=' + id, value)
     // return this.httpClient.put(this.backendURL + 'cctvs', value, { params : { id : id}})
     // delete value.durable_name;
     // value.durable_name = '';
     return this.httpClient.put(this.backendURL + 'cctvs', value, { params: { id } })
+  }
+
+  // ลบข้อมูลกล้อง
+  delete_items(id: any) {
+    return this.httpClient.delete(this.backendURL + 'cctvs', { params: { id } })
   }
 
   get_status() {
