@@ -36,6 +36,7 @@ if (isset($_GET['id'])) {
                 'message' => 'Brand is required'
             ]));
         }
+        //ตัดออก เพื่อให้สามารถ Update ค่าเป็นแบบค่าว่างได้ 
         // if (empty($data->floor_id)) {
         //     http_response_code(400);
         //     exit(json_encode([
