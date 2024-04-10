@@ -47,7 +47,7 @@ export class PutComponent {
     this.cctvService.put_items(this.model.id, this.model)
       .subscribe({
         next: (result) => {
-          console.log(result)
+          // console.log(result)
           $('#editCctvModal').modal('hide');
           this.getComp.getCCTV();
         },

@@ -27,7 +27,7 @@ if (isset($_GET['id'])) {
                 'message' => $error_message
             ]));
         }
-
+        
         exit(json_encode([
             'message' => 'ลบหลายรายการสำเร็จ'
         ]));
