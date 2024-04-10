@@ -18,9 +18,12 @@ import { CctvService, ICctvs } from '../cctv.service';
 export class GetComponent {
 
   public cctvItems: ICctvs[] = [];
+  public limitPage : number = 10;
+  public paginations : number[] = [1,2,3];
 
   constructor(private cctvService: CctvService) {
     this.getCCTV();
+    this.initializedLoadPagination();
   }
 
 
@@ -80,5 +83,9 @@ export class GetComponent {
     Object.assign(this.cctvService.deleteModel, item)
   }
 
+  //Function คำนวณหน้าเพจ
+  initializedLoadPagination(){
+
+  }
 
 }
