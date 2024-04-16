@@ -35,6 +35,7 @@ export class GetComponent {
     { completed: false }
   ]
 
+  // เช็คว่ามีการติ๊ก บางรายการ
   someComplete(): boolean {
     if (this.checked == null) {
       return false;
@@ -43,6 +44,7 @@ export class GetComponent {
 
   }
 
+  // เมื่อมีการกดปุ่ม เลือกทั้งหมด
   setAll(completed: boolean) {
     this.checked = completed;
     if (this.subtasks == null) {
@@ -53,11 +55,14 @@ export class GetComponent {
     this.onStoreCctvDelete();
   }
 
+  // แก้ไขปุ่มเลือกทั้งหมด เมื่อมีการเลือกรายการจนครบ
   updateAllComplete() {
     this.checked = this.cctvItems != null && this.cctvItems.every(t => t.completed);
     this.onStoreCctvDelete();
   }
 
+
+  // เก็บข้อมูล ID สำหรับการลบครั้งละหลายรายการ
   onStoreCctvDelete() {
     // const deleteAll = this.cctvItems.filter(t => t.completed).map(t => t.id)
     // console.log(deleteAll)
@@ -70,6 +75,7 @@ export class GetComponent {
   }
 
 
+  // ดึงข้อมูลกล้องทั้งหมด
   getCCTV() {
     return this.cctvService.get_cctvs()
       .subscribe(result => {
@@ -99,14 +105,22 @@ export class GetComponent {
   public onPreviousPage() {
     if (this.startPage <= 1) return;
     this.startPage = this.startPage - 1;
+    this.onStoreCctvDelete();
   }
 
   // Function เมื่อกดปุ่ม ถัดไป
   public onNextPage() {
     if (this.startPage >= this.paginations.length) return;
     this.startPage = this.startPage + 1;
+    this.onStoreCctvDelete();
   }
 
+  public onChangePage(page: number) {
+    this.startPage = page;
+    this.onStoreCctvDelete();
+  }
+
+  
   //Function คำนวณหน้าเพจ
   private initializedLoadPagination() {
     const pageLength = Math.ceil(this.cctvItems.length / this.limitPage);

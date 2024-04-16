@@ -64,7 +64,7 @@
             <a class="page-link" (click)="onPreviousPage()">Previous</a>
         </li>
         <li class="page-item" [ngClass]="{ active : startPage == page }" *ngFor="let page of paginations">
-            <a class="page-link" (click)="startPage = page">{{ page }}</a>
+            <a class="page-link" (click)="onChangePage(page)">{{ page }}</a>
         </li>
         <li class="page-item" [ngClass]="{ disabled : startPage >= paginations.length }">
             <a class="page-link" (click)="onNextPage()">Next</a>
