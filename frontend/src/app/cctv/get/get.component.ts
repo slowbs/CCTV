@@ -85,11 +85,16 @@ export class GetComponent {
     Object.assign(this.cctvService.deleteModel, item)
   }
 
+
+  public getPaginItems(items: ICctvs[]) {
+    return items.slice((this.startPage - 1) * this.limitPage, this.startPage * this.limitPage)
+  }
+
+  // Function เมื่อกดปุ่ม ก่อนหน้า
   public onPreviousPage() {
     if (this.startPage <= 1) return;
     this.startPage = this.startPage - 1;
   }
-
 
   // Function เมื่อกดปุ่ม ถัดไป
   public onNextPage() {
