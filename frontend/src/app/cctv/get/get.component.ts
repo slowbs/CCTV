@@ -22,6 +22,10 @@ export class GetComponent {
   public limitPage: number = 10;
   public startPage: number = 1;
   public paginations: number[] = [];
+  checked: boolean = false;
+  subtasks = [
+    { completed: false }
+  ]
 
 
   constructor(private cctvService: CctvService) {
@@ -30,10 +34,7 @@ export class GetComponent {
   }
 
 
-  checked: boolean = false;
-  subtasks = [
-    { completed: false }
-  ]
+
 
   // เช็คว่ามีการติ๊ก บางรายการ
   someComplete(): boolean {
@@ -81,7 +82,9 @@ export class GetComponent {
       .subscribe(result => {
         this.cctvItems = result['result']
         // console.log(result)
+        // this.checked = false
         this.initializedLoadPagination();
+        this.onResetChecked();
       });
   }
 
@@ -106,22 +109,34 @@ export class GetComponent {
   public onPreviousPage() {
     if (this.startPage <= 1) return;
     this.startPage = this.startPage - 1;
-    this.onStoreCctvDelete();
+    // this.onStoreCctvDelete();
+    this.onResetChecked();
   }
 
   // Function เมื่อกดปุ่ม ถัดไป
   public onNextPage() {
     if (this.startPage >= this.paginations.length) return;
     this.startPage = this.startPage + 1;
-    this.onStoreCctvDelete();
+    // this.onStoreCctvDelete();
+    this.onResetChecked();
   }
 
+  // Function เมื่อกดปุ่มเปลี่ยนหน้าด้วยตัวเลข
   public onChangePage(page: number) {
     this.startPage = page;
-    this.onStoreCctvDelete();
+    // this.onStoreCctvDelete();
+    this.onResetChecked();
   }
 
-  
+  public onResetChecked() {
+    this.checked = false
+    this.cctvItems.map(item => {
+      item.completed = this.checked;
+      return item
+    });
+  }
+
+
   //Function คำนวณหน้าเพจ
   private initializedLoadPagination() {
     const pageLength = Math.ceil(this.cctvItems.length / this.limitPage);
