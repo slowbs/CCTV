@@ -61,7 +61,11 @@ export class GetComponent {
   onStoreCctvDelete() {
     // const deleteAll = this.cctvItems.filter(t => t.completed).map(t => t.id)
     // console.log(deleteAll)
-    this.cctvService.deleteAllModel = this.cctvItems.filter(t => t.completed).map(t => t.id)
+    // this.cctvService.deleteAllModel = this.cctvItems.filter(t => t.completed).map(t => t.id)
+    this.cctvService.deleteAllModel
+      = new PaginationPipe().transform(this.cctvItems, this.startPage, this.limitPage)
+        .filter((t: ICctvs) => t.completed)
+        .map((t: ICctvs) => t.id)
     // console.log(this.cctvService.deleteAllModel)
   }
 
@@ -86,7 +90,7 @@ export class GetComponent {
     Object.assign(this.cctvService.deleteModel, DataTransferItemList)
   }
 
-// function สำหรับกำหนด items แสดงตาม Pagination
+  // function สำหรับกำหนด items แสดงตาม Pagination
   // public getPaginItems(items: ICctvs[]) {
   //   return items.slice((this.startPage - 1) * this.limitPage, this.startPage * this.limitPage)
   // }
