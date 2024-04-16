@@ -18,8 +18,10 @@ import { CctvService, ICctvs } from '../cctv.service';
 export class GetComponent {
 
   public cctvItems: ICctvs[] = [];
-  public limitPage : number = 10;
-  public paginations : number[] = [1,2,3];
+  public limitPage: number = 10;
+  public startPage: number = 1;
+  public paginations: number[] = [];
+
 
   constructor(private cctvService: CctvService) {
     this.getCCTV();
@@ -83,9 +85,25 @@ export class GetComponent {
     Object.assign(this.cctvService.deleteModel, item)
   }
 
-  //Function คำนวณหน้าเพจ
-  initializedLoadPagination(){
+  public onPreviousPage() {
+    if (this.startPage <= 1) return;
+    this.startPage = this.startPage - 1;
+  }
 
+
+  // Function เมื่อกดปุ่ม ถัดไป
+  public onNextPage() {
+    if (this.startPage >= this.paginations.length) return;
+    this.startPage = this.startPage + 1;
+  }
+
+  //Function คำนวณหน้าเพจ
+  private initializedLoadPagination() {
+    const pageLength = Math.ceil(this.cctvItems.length / this.limitPage);
+    // console.log(pageLength)
+    this.paginations = [];
+    for (let index = 1; index <= pageLength; index++)
+      this.paginations.push(index)
   }
 
 }

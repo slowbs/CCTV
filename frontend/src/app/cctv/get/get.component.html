@@ -60,9 +60,15 @@
 <div class="clearfix">
     <div class="hint-text">Showing <b> {{ limitPage }}</b> out of <b> {{ cctvItems.length }}</b> entries</div>
     <ul class="pagination">
-        <li class="page-item disabled"><a>Previous</a></li>
-        <li class="page-item" *ngFor="let page of paginations"><a class="page-link">{{ page }}</a></li>
-        <li class="page-item"><a class="page-link">Next</a></li>
+        <li class="page-item" [ngClass]="{ disabled : startPage <= 1 }">
+            <a class="page-link" (click)="onPreviousPage()">Previous</a>
+        </li>
+        <li class="page-item" [ngClass]="{ active : startPage == page }" *ngFor="let page of paginations">
+            <a class="page-link" (click)="startPage = page">{{ page }}</a>
+        </li>
+        <li class="page-item" [ngClass]="{ disabled : startPage >= paginations.length }">
+            <a class="page-link" (click)="onNextPage()">Next</a>
+        </li>
     </ul>
 </div>
 
