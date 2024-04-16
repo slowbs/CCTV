@@ -21,20 +21,20 @@ export class DeleteAllComponent {
   }
 
   onDelete() {
-    console.log(this.cctvService.deleteAllModel)
-    // this.cctvService.delete_Allitems(this.cctvService.deleteAllModel)
-    //   .subscribe({
-    //     next: (result) => {
-    //       // console.log(result)
-    //       $('#deleteAllModal').modal('hide');
-    //       this.getComp.getCCTV();
-    //       // this.getComp.ngOnInit();
-    //     },
-    //     error: (excep) => {
-    //       console.log(excep)
-    //       // alert(excep.error.message)
-    //     }
-    //   })
+    // console.log(this.cctvService.deleteAllModel)
+    this.cctvService.delete_Allitems(this.cctvService.deleteAllModel)
+      .subscribe({
+        next: (result) => {
+          // console.log(result)
+          $('#deleteAllModal').modal('hide');
+          this.getComp.getCCTV();
+          // this.getComp.ngOnInit();
+        },
+        error: (excep) => {
+          console.log(excep)
+          // alert(excep.error.message)
+        }
+      })
   }
 
 }
