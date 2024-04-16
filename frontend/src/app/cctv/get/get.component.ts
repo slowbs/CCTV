@@ -16,7 +16,7 @@ import { PaginationPipe } from '../../pipes/pagination.pipe';
   styleUrl: './get.component.css'
 })
 
-export class GetComponent {
+export class GetComponent implements OnInit {
 
   public cctvItems: ICctvs[] = [];
   public limitPage: number = 10;
@@ -25,8 +25,10 @@ export class GetComponent {
 
 
   constructor(private cctvService: CctvService) {
+  }
+
+  ngOnInit(): void {
     this.getCCTV();
-    this.initializedLoadPagination();
   }
 
 
@@ -80,6 +82,7 @@ export class GetComponent {
     return this.cctvService.get_cctvs()
       .subscribe(result => {
         this.cctvItems = result['result']
+        this.initializedLoadPagination();
         // console.log(result)
       });
   }
@@ -120,7 +123,7 @@ export class GetComponent {
     this.onStoreCctvDelete();
   }
 
-  
+
   //Function คำนวณหน้าเพจ
   private initializedLoadPagination() {
     const pageLength = Math.ceil(this.cctvItems.length / this.limitPage);
