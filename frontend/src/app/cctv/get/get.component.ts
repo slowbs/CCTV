@@ -5,11 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CommonModule } from '@angular/common';
 import { CctvService, ICctvs } from '../cctv.service';
+import { PaginationPipe } from '../../pipes/pagination.pipe';
 
 @Component({
   selector: 'app-get',
   standalone: true,
-  imports: [MatButtonModule, MatTooltipModule, MatCheckboxModule, FormsModule, CommonModule],
+  imports: [MatButtonModule, MatTooltipModule, MatCheckboxModule, FormsModule, CommonModule, PaginationPipe],
   // providers: [CctvService],
   templateUrl: './get.component.html',
   styleUrl: './get.component.css'
@@ -74,21 +75,21 @@ export class GetComponent {
   }
 
   //Function เมื่อกดปุ่มแก้ไข
-  onEditModal(item: ICctvs) {
-    Object.assign(this.cctvService.updateModel, item)
+  onEditModal(items: ICctvs) {
+    Object.assign(this.cctvService.updateModel, items)
     // console.log(this.cctvService.updateModel)
   }
 
   // Function เพื่อกดปุ่มลบ
-  onDeleteModal(item: ICctvs) {
-    // console.log(item)
-    Object.assign(this.cctvService.deleteModel, item)
+  onDeleteModal(items: ICctvs) {
+    // console.log(items)
+    Object.assign(this.cctvService.deleteModel, DataTransferItemList)
   }
 
-
-  public getPaginItems(items: ICctvs[]) {
-    return items.slice((this.startPage - 1) * this.limitPage, this.startPage * this.limitPage)
-  }
+// function สำหรับกำหนด items แสดงตาม Pagination
+  // public getPaginItems(items: ICctvs[]) {
+  //   return items.slice((this.startPage - 1) * this.limitPage, this.startPage * this.limitPage)
+  // }
 
   // Function เมื่อกดปุ่ม ก่อนหน้า
   public onPreviousPage() {
