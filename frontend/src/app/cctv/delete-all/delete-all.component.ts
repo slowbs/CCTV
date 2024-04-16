@@ -27,8 +27,8 @@ export class DeleteAllComponent {
         next: (result) => {
           // console.log(result)
           $('#deleteAllModal').modal('hide');
-          // this.getComp.getCCTV();
-          this.getComp.ngOnInit();
+          this.getComp.getCCTV();
+          // this.getComp.ngOnInit();
         },
         error: (excep) => {
           console.log(excep)
