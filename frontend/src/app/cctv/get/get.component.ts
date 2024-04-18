@@ -97,7 +97,7 @@ export class GetComponent {
   // Function เพื่อกดปุ่มลบ
   onDeleteModal(items: ICctvs) {
     // console.log(items)
-    Object.assign(this.cctvService.deleteModel, DataTransferItemList)
+    Object.assign(this.cctvService.deleteModel, items)
   }
 
   // function สำหรับกำหนด items แสดงตาม Pagination
